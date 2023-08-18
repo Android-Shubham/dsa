@@ -13,9 +13,12 @@ public class FindFirstAndLastOccurence {
     public static int[] searchRange(int[] nums, int target) {
         int[] ans = {-1,-1};
         int firstIndex = search(nums,target,true);
-        int lastIndex = search(nums,target,false);
-        ans[0] = firstIndex;
-        ans[1] = lastIndex;
+        if(firstIndex !=-1) {
+            int lastIndex = search(nums, target, false);
+            ans[0] = firstIndex;
+            ans[1] = lastIndex;
+        }
+
         return ans;
     }
 

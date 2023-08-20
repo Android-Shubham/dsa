@@ -2,13 +2,11 @@ package binarysearch;
 
 public class FindRotationCount {
     public static void main(String[] args) {
-        int[] arr = {2,3,4,5,1};
+        int[] arr = {1,2,3,4,5,1};
         int pivot = findPivot(arr);
-        if(pivot == -1){
-            System.out.println(0);
-        }else {
+
             System.out.println(pivot+1);
-        }
+
     }
 
     private static int findPivot(int[] arr) {

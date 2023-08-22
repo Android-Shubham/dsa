@@ -14,17 +14,17 @@ public class BinarySearch2D {
         System.out.println(Arrays.toString(binarySearch2d(arr,target)));
     }
 
-    private static int[] binarySearch2d(int[][] arr, int target) {
+    private static int[] binarySearch2d(int[][] matrix, int target) {
 
         int row = 0;
-        int col = arr.length - 1;
-        while (row < arr.length && col>=0){
+        int col = matrix.length - 1;
+        while (row < matrix.length && col>=0){
 
-            if(target == arr[row][col]){
+            if(target == matrix[row][col]){
                 return new int[]{row,col};
             }
 
-            if(target < arr[row][col]){
+            if(target < matrix[row][col]){
                 col --;
             }else {
                 row++;

@@ -4,10 +4,24 @@ import java.util.HashMap;
 
 public class LongestSubstringWithoutRepeat {
     public static void main(String[] args) {
-        String s ="abcabcdb";
+        String s ="abcabcbb";
         System.out.println(bruteForce(s));
         System.out.println(slidingWindow(s));
+        System.out.println(slidingWindowOptimized(s));
+    }
 
+    private static int slidingWindowOptimized(String s) {
+        int max =0;
+        for (int right = 0, left =0 ;right < s.length(); right++) {
+            char currentChar = s.charAt(right);
+            int locationOfLastAppearance = s.indexOf(currentChar,left);
+            if(locationOfLastAppearance!=right){
+                left = locationOfLastAppearance + 1;
+            }
+            max =Math.max(max,right - left+1);
+        }
+
+        return max;
     }
 
     private static int slidingWindow(String s) {

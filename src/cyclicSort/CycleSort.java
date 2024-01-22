@@ -12,11 +12,11 @@ public class CycleSort {
 
     private static int[] cyclicSort(int[] arr) {
         int index = 0;
-        int last = arr.length;
-        while (index < last) {
-            if (index != arr[index]) {
-                swap(arr, index, arr[index]);
-            } else {
+        int last =  arr.length;
+        while (index<last){
+            if(index!=arr[index]){
+                swap(arr,index,arr[index]);
+            }else {
                 index++;
             }
         }

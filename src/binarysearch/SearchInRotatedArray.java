@@ -3,10 +3,9 @@ package binarysearch;
 public class SearchInRotatedArray {
 
     public static void main(String[] args) {
-        int[] nums = {3,4,5,6,1,2};
+        int[] nums = {13,9,10,11,12};
         int target = 2;
         System.out.println(search(nums, target));
-
     }
 
 

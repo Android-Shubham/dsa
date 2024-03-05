@@ -24,19 +24,4 @@ public class SymmetricBinaryTree {
         return isSymmetricRec(left.left, right.right) && isSymmetricRec(right.left, left.right);
     }
 
-    public int majorityElement(int[] nums) {
-        int res = 0;
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for(int num : nums){
-            if(!map.containsKey(num)){
-                map.put(num,0);
-            }
-           map.put(num,map.get(num)+1);
-        }
-
-
-
-
-        return res;
-    }
 }

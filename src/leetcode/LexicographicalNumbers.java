@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LexicographicalNumbers {
     public static void main(String[] args) {
-        System.out.println(lexicalOrder(13));
+        System.out.println(lexicalOrder(10));
     }
 
     public static List<Integer> lexicalOrder(int n) {

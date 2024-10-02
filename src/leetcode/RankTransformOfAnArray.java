@@ -51,4 +51,31 @@ public class RankTransformOfAnArray {
         }
         return res;
     }
+
+
+    public int[] arrayRankTransform2(int[] arr) {
+        int n = arr.length;
+        int[] sorted = new int[n];
+        int index = 0;
+        for (int num : arr) {
+            sorted[index++] = num;
+        }
+        Arrays.sort(sorted);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        index = 0;
+        int i = 0;
+        while (i < n) {
+            int num = sorted[i];
+            map.put(num,++index);
+            while(i<n && sorted[i]==num){
+                i++;
+            }
+        }
+
+        index = 0;
+        for(int num : arr){
+            sorted[index++] = map.get(num);
+        }
+        return sorted;
+    }
 }

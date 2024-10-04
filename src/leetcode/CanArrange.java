@@ -8,7 +8,7 @@ public class CanArrange {
 
     public static void main(String[] args) {
         CanArrange canArrange = new CanArrange();
-        System.out.println(canArrange.canArrange(new int[]{1,2,3,4,5,10,6,7,8,9},5));
+        System.out.println(canArrange.canArrangeOptimised(new int[]{1,2,3,4,5,10,6,7,8,9},5));
     }
     public boolean canArrange(int[] arr, int k) {
         Map<Integer, Integer> remainderCount = new HashMap<>();
@@ -35,6 +35,24 @@ public class CanArrange {
                             remainderCount.get(k - rem)
                     )
             ) return false;
+        }
+        return true;
+    }
+
+    public boolean canArrangeOptimised(int[] arr, int k) {
+        int[] map = new int[k];
+        for(int element : arr){
+            int rem = ((element % k) + k) % k;
+            map[rem]++;
+        }
+        if(map[0]%2!=0){
+            return false;
+        }
+        for(int rem = 1;rem<=k/2;rem++){
+            int comp = k - rem;
+            if(map[rem]!=map[comp]){
+                return false;
+            }
         }
         return true;
     }

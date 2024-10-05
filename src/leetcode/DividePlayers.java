@@ -21,4 +21,31 @@ public class DividePlayers {
         }
         return res;
     }
+
+    public long dividePlayersOptimized(int[] skill) {
+        int target = 0;
+        int n = skill.length / 2;
+        int[] map = new int[1001];
+        for(int s : skill){
+            target+=s;
+            map[s]++;
+        }
+        if(target%n!=0){
+            return -1;
+        }
+        target/=n;
+        long res = 0;
+        for(int s : skill){
+            if(map[s]>0){
+                if(map[target-s]<1){
+                    return -1;
+                }
+                map[s]--;
+                res+=(s * (target-s));
+                map[target-s]--;
+            }
+        }
+
+        return res;
+    }
 }

@@ -8,7 +8,8 @@ public class ProductOfArrayExceptSelf {
         ProductOfArrayExceptSelf productOfArrayExceptSelf = new ProductOfArrayExceptSelf();
         System.out.println(Arrays.toString(productOfArrayExceptSelf.productExceptSelf(new int[]{1, 2, 3, 4})));
     }
-    public int[] productExceptSelf(int[] nums) {
+    //brute force
+    public int[] productExceptSelf_bruteforce(int[] nums) {
         int n = nums.length;
         int[] pre = new int[n];
         int[] suf = new int[n];
@@ -36,4 +37,30 @@ public class ProductOfArrayExceptSelf {
 
         return nums;
     }
+
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n]; // Array to store the results
+
+        // Initialize the result array with 1s
+        Arrays.fill(result, 1);
+
+        // Calculate prefix products
+        int prefixProduct = 1;
+        for (int i= 0; i < n; i++) {
+            result[i] *= prefixProduct; // Multiply with previous prefix product
+            prefixProduct *= nums[i];   // Update prefix product
+        }
+
+        // Calculate suffix products and multiply with prefix products
+        int suffixProduct = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            result[i] *= suffixProduct; // Multiply with previous suffix product
+            suffixProduct *= nums[i];   // Update suffix product
+        }
+
+        return result;
+    }
+
+
 }

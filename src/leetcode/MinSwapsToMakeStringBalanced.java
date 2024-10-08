@@ -7,6 +7,22 @@ public class MinSwapsToMakeStringBalanced {
     public static void main(String[] args) {
         MinSwapsToMakeStringBalanced minSwapsToMakeStringBalanced = new MinSwapsToMakeStringBalanced();
         System.out.println(minSwapsToMakeStringBalanced.minSwapsBruteForce("]]][[["));
+        System.out.println(minSwapsToMakeStringBalanced.minSwaps("]]][[["));
+
+    }
+    public int minSwaps(String s){
+        int stack = 0;
+        for(char ch : s.toCharArray()){
+            if(ch == '['){
+                stack++;
+            }else {
+                if(stack>0){
+                    stack--;
+                }
+            }
+        }
+
+        return (stack + 1) /2;
     }
     public int minSwapsBruteForce(String s) {
         if(isBalanced(s)){

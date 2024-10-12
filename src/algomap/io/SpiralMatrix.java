@@ -8,7 +8,9 @@ public class SpiralMatrix {
 
     public static void main(String[] args) {
         SpiralMatrix spiralMatrix = new SpiralMatrix();
+        // List<Integer>res = spiralMatrix.spiralOrder(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}});
         System.out.println(spiralMatrix.spiralOrder(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}));
+
     }
 
     public List<Integer> spiralOrder(int[][] matrix) {
@@ -17,7 +19,8 @@ public class SpiralMatrix {
         int left = 0;
         int right = matrix[0].length - 1;
         int bottom = matrix.length - 1;
-        while (left <= right && top <= bottom) {
+
+        while (top <= bottom && left <= right) {
             for (int i = left; i <= right; i++) {
                 res.add(matrix[left][i]);
             }
@@ -37,13 +40,13 @@ public class SpiralMatrix {
                 bottom--;
             }
 
+
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
                     res.add(matrix[i][left]);
                 }
                 left++;
             }
-
 
         }
 

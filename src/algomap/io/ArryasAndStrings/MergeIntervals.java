@@ -1,4 +1,4 @@
-package algomap.io;
+package algomap.io.ArryasAndStrings;
 
 import java.util.ArrayList;
 import java.util.Arrays;

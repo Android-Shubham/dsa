@@ -1,4 +1,4 @@
-package algomap.io;
+package algomap.io.ArryasAndStrings;
 
 //https://leetcode.com/problems/is-subsequence/
 public class IsSubsequence {

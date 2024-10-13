@@ -1,4 +1,4 @@
-package algomap.io;
+package algomap.io.ArryasAndStrings;
 
 //https://leetcode.com/problems/merge-strings-alternately/submissions/1234785302/
 public class MergeTwoStrings {

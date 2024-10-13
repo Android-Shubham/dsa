@@ -1,4 +1,4 @@
-package algomap.io;
+package algomap.io.ArryasAndStrings;
 
 //https://leetcode.com/problems/find-closest-number-to-zero/description/
 public class ClosestNumberToZero {

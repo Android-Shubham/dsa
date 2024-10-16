@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ThreeSum {
+    public static void main(String[] args) {
+        ThreeSum threeSum = new ThreeSum();
+        threeSum.threeSum(new int[]{-1,0,1,2,-1,-4});
+    }
 
     public List<List<Integer>> threeSum(int[] nums) {
         int n = nums.length - 1;

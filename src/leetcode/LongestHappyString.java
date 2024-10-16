@@ -9,58 +9,59 @@ public class LongestHappyString {
         longestDiverseString(1, 1, 7);
     }
     public static String longestDiverseString(int a, int b, int c) {
-        PriorityQueue<int[]> q = new PriorityQueue<>(new Comparator<int[]>() {
+        PriorityQueue<NewPair> q = new PriorityQueue<>(new Comparator<NewPair>() {
             @Override
-            public int compare(int[] a, int[] b) {
-                return b[0]-a[0];
+            public int compare(NewPair a,NewPair b) {
+                return b.count - a.count;
             }
         });
 
+        if(a>0){
+            q.offer(new NewPair('a',a));
+        }
+        if(b>0){
+            q.offer(new NewPair('b',b));
+        }
+        if(c>0){
+            q.offer(new NewPair('c',c));
+        }
+
         StringBuilder sb = new StringBuilder();
 
-        while (a > 0 || b > 0 || c > 0) {
-
-            while (!q.isEmpty()) {
-                int[] cur = q.poll();
-                switch (cur[1]) {
-                    case 1 -> {
-                        if (cur[0] > 2) {
-                            sb.append('a').append('a');
-                            a -= 2;
-                        } else if (cur[0] > 0) {
-                            sb.append('a');
-                            a--;
-                        }
-                        break;
-                    }
-                    case 2 -> {
-                        if (cur[0] > 2) {
-                            sb.append('b').append('b');
-                            b -= 2;
-                        } else if (cur[0] > 0) {
-                            sb.append('b');
-                            b--;
-                        }
-                        break;
-                    }
-                    default -> {
-                        if (cur[0] > 2) {
-                            sb.append('c').append('c');
-                            c -= 2;
-                        } else if (cur[0] > 0) {
-                            sb.append('c');
-                            c--;
-                        }
-                        break;
-                    }
+        while(!q.isEmpty()){
+            NewPair cur = q.poll();
+            int count = cur.count;
+            char ch = cur.ch;
+            int n = sb.length();
+            if(n >= 2 && sb.charAt(n-1)==ch && sb.charAt(n-2)==ch){
+                if(q.isEmpty()) break;
+                NewPair temp = q.poll();
+                //if(temp.count>0){
+                sb.append(temp.ch);
+                //}
+                if(temp.count-1 > 0){
+                    q.offer(new NewPair(temp.ch,temp.count-1));
                 }
+            }else{
+                count--;
+                sb.append(ch);
             }
 
-            q.offer(new int[] { a, 1 });
-            q.offer(new int[] { b, 2 });
-            q.offer(new int[] { c, 3 });
+            if(count>0){
+                q.offer(new NewPair(ch,count));
+            }
         }
 
         return sb.toString();
+    }
+}
+
+class NewPair {
+    char ch;
+    int count;
+
+    public NewPair(char ch, int count) {
+        this.ch = ch;
+        this.count = count;
     }
 }

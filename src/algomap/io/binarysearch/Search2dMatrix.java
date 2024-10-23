@@ -2,6 +2,23 @@ package algomap.io.binarysearch;
 
 public class Search2dMatrix {
 
+
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int row = 0;
+        int column = matrix[0].length - 1;
+
+        while(row < matrix.length && column>=0){
+            if(matrix[row][column] == target){
+                return true;
+            }else if(matrix[row][column] < target){
+                row++;
+            }else{
+                column--;
+            }
+        }
+
+        return false;
+    }
     public boolean searchMatrix_first(int[][] matrix, int target) {
         int start = 0;
         int end = matrix[0].length - 1;

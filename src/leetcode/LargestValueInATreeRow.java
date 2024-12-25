@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Queue;
 
 public class LargestValueInATreeRow {
+
+    //bfs
     public List<Integer> largestValues(TreeNode root) {
         List<Integer>ans = new ArrayList<>();
         if(root==null) return ans;
@@ -28,4 +30,26 @@ public class LargestValueInATreeRow {
         }
         return ans;
     }
+
+
+
+    //dfs
+    List<Integer>ans = new ArrayList<>();
+    public List<Integer> largestValues_dfs(TreeNode root) {
+        dfs(root,0);
+        return ans;
+    }
+    private void dfs(TreeNode root,int level){
+        if(root==null){
+            return;
+        }
+        if(level == ans.size()){
+            ans.add(root.val);
+        }else{
+            ans.set(level,Math.max(ans.get(level),root.val));
+        }
+        dfs(root.left,level+1);
+        dfs(root.right,level+1);
+    }
+
 }

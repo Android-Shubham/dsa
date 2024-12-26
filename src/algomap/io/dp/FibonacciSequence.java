@@ -1,32 +1,34 @@
 package algomap.io.dp;
 
+import java.util.Arrays;
+
 public class FibonacciSequence {
     public static void main(String[] args) {
         FibonacciSequence fibonacciSequence = new FibonacciSequence();
-        System.out.println(fibonacciSequence.fib_bottom_up(7));
         System.out.println(fibonacciSequence.fib_top_down(7));
+        System.out.println(fibonacciSequence.fiboRecursion(7));
 
     }
     //top down DP
-    public int fib_top_down(int n) {
+    public int fiboRecursion(int n) {
         if(n==0) return 0;
         if(n==1) return 1;
-        return fib_top_down(n-1) + fib_top_down(n-2);
+        return fiboRecursion(n-1) + fiboRecursion(n-2);
     }
 
-    public int fib_bottom_up(int n) {
-        if(n==0) return 0;
-        if(n==1) return 1;
-        int first = 0;
-        int second = 1;
-        int i = 1;
-        int temp = 0;
-        while (i != n) {
-            temp = first + second;
-            first = second;
-            second = temp;
-            i++;
+    public int fib_top_down(int n) {
+        int[] memo = new int[n+1];
+        Arrays.fill(memo, -1);
+        return recur(memo,n);
+    }
+
+    private int recur(int[] memo, int n) {
+        if(n<=1){
+            memo[n] = n;
+            return n;
         }
-        return temp;
+        if(memo[n]!=-1) return memo[n];
+        memo[n] = recur(memo, n-1) + recur(memo, n-2);
+        return memo[n];
     }
 }

@@ -19,4 +19,22 @@ public class WaysToSplitArray {
         }
         return count;
     }
+
+    public int waysToSplitArray_optimized(int[] nums) {
+        int n = nums.length;
+        int count = 0;
+        long total = 0;
+        long left = 0;
+        for(int i=0;i<n;i++){
+            total += nums[i];
+        }
+        for(int i=0;i<n-1;i++){
+            left += nums[i];
+            if(left>=total-left){
+                count++;
+            }
+        }
+
+        return count;
+    }
 }

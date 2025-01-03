@@ -25,8 +25,8 @@ public class WaysToSplitArray {
         int count = 0;
         long total = 0;
         long left = 0;
-        for(int i=0;i<n;i++){
-            total += nums[i];
+        for (int num : nums) {
+            total += num;
         }
         for(int i=0;i<n-1;i++){
             left += nums[i];

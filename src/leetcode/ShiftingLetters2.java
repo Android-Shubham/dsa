@@ -27,4 +27,37 @@ public class ShiftingLetters2 {
         }
         return new String(chars);
     }
+
+
+    //line sweep
+    public String shiftingLetters(String s, int[][] shifts) {
+        int n = s.length();
+        char[] chars = s.toCharArray();
+        int[] arr = new int[n];
+        for(int[] shift : shifts){
+            int start = shift[0];
+            int end = shift[1];
+            int dir = shift[2];
+            if(dir == 1){
+                arr[start]++;
+                if(end+1<n){
+                    arr[end+1]--;
+                }
+            }else{
+                arr[start]--;
+                if(end+1<n){
+                    arr[end+1]++;
+                }
+            }
+        }
+        int sum = 0;
+        for(int i=0;i<n;i++){
+            sum = (sum+arr[i])%26;
+            if(sum<0){
+                sum+=26;
+            }
+            chars[i] = (char)('a'+(chars[i]-'a'+sum)%26);
+        }
+        return new String(chars);
+    }
 }

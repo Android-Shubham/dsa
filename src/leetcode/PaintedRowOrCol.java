@@ -3,7 +3,31 @@ package leetcode;
 import java.util.HashMap;
 
 public class PaintedRowOrCol {
+
     public int firstCompleteIndex(int[] arr, int[][] mat) {
+        HashMap<Integer,int[]>map = new HashMap<>();
+        int n = mat.length;
+        int m = mat[0].length;
+        int[] row = new int[n];
+        int[] cols = new int[m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                map.put(mat[i][j],new int[]{i,j});
+            }
+        }
+        for(int i=0;i<m*n;i++){
+            int[] cur = map.get(arr[i]);
+            int r=cur[0];
+            int c=cur[1];
+            row[r]++;
+            cols[c]++;
+            if(row[r]==m || cols[c]==n){
+                return i;
+            }
+        }
+        return 0;
+    }
+    public int firstCompleteIndex_bruteforce(int[] arr, int[][] mat) {
         HashMap<Integer,int[]> map = new HashMap<>();
         int n = mat.length;
         int m = mat[0].length;

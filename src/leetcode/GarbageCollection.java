@@ -22,7 +22,7 @@ public class GarbageCollection {
                 last_m = i;
             }
         }
-        if(last_p!=-1){
+        if(last_p>0){
             total+=(travel[last_p-1]);
         }
         if(last_g>0){

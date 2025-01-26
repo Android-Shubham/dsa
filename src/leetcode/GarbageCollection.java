@@ -9,16 +9,16 @@ public class GarbageCollection {
         for(int i=1;i<travel.length;i++){
             travel[i]+=travel[i-1];
         }
-        for(int i=0;i<garbage.length;i++){
+        for(int i=garbage.length-1;i>=0;i--){
             String g = garbage[i];
             total+=g.length();
-            if(g.contains("G")){
+            if(last_g==-1 && g.contains("G")){
                 last_g = i;
             }
-            if(g.contains("P")){
+            if(last_p==-1 && g.contains("P")){
                 last_p = i;
             }
-            if(g.contains("M")){
+            if(last_m==-1 && g.contains("M")){
                 last_m = i;
             }
         }

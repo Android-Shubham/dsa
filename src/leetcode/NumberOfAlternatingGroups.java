@@ -1,7 +1,28 @@
 package leetcode;
 
 public class NumberOfAlternatingGroups {
+
+
     public int numberOfAlternatingGroups(int[] colors, int k) {
+        int i = 0;
+        int j = 1;
+        int n = colors.length;
+        int groups = 0;
+        while (i < n) {
+            if(colors[j%n]==colors[(j-1)%n]){
+                i=j;
+            }
+            if(j-i+1 == k){
+                groups++;
+                i++;
+            }
+            j++;
+        }
+        return groups;
+    }
+
+
+    public int numberOfAlternatingGroups_bruteforce(int[] colors, int k) {
         int i = 0;
         int j = k - 1;
         int n = colors.length;

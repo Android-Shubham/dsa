@@ -2,8 +2,18 @@ package algomap.io.intervals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class CountDaysWithoutMeetings {
+    public static void main(String[] args) {
+        PriorityQueue<Integer>max = new PriorityQueue<>(Collections.reverseOrder());
+        max.offer(1);
+        max.offer(2);
+        max.offer(3);
+        System.out.println(max.peek());
+        System.out.println(max.poll());
+    }
     public int countDays(int days, int[][] meetings) {
         Arrays.sort(meetings, ((a, b) -> Integer.compare(a[0], b[0])));
         ArrayList<int[]> merged = merge(meetings);

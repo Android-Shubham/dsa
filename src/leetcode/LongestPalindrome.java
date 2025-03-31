@@ -7,38 +7,36 @@ public class LongestPalindrome {
 
 
     public static String longestPalindrome(String s) {
-        String ans = "";
-        int length = s.length();
-
-        if(s.length()<2){
-            return s;
-        }
-
-        for(int left = 0;left<length - 1 ;left++){
-            for (int right = left+1 ;right <= length; right++) {
-                String sub = s.substring(left,right);
-
-                if( isPalindrome(sub)){
-                    if(ans.length() < sub.length()){
-                        ans  =  sub;
-                    }
+        int n=s.length();
+        if(n<2) return s;
+        int index = 0;
+        int len = 0;
+        for(int i=0;i<n;i++){
+            //for odd length
+            int left = i;
+            int right = i;
+            while(left>=0 && right<n && s.charAt(left) == s.charAt(right)){
+                if(right - left + 1 > len){
+                    index = left;
+                    len = right-left+1;
                 }
+                left--;
+                right++;
+            }
 
+            left = i;
+            right = i+1;
+            while(left>=0 && right<n && s.charAt(left) == s.charAt(right)){
+                if(right - left + 1 > len){
+                    index = left;
+                    len = right-left+1;
+                }
+                left--;
+                right++;
             }
         }
 
-        return ans;
-    }
-
-    public static boolean isPalindrome(String str){
-        int length = str.length();
-        for(int i=0;i<length/2;i++){
-            if(str.charAt(i)!=str.charAt(length-1-i)){
-                return false;
-            }
-        }
-
-        return true;
+        return s.substring(index,index+len);
     }
 }
 

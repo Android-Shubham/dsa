@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class LengthAfterTransformations {
     public static void main(String[] args) {
         LengthAfterTransformations lengthAfterTransformations = new LengthAfterTransformations();
@@ -11,6 +14,14 @@ public class LengthAfterTransformations {
         for (char ch : s.toCharArray()) {
             arr[ch - 'a']++;
         }
+
+        int[][] intervals = new int[5][5];
+        Arrays.sort(intervals, new Comparator<int[]>(){
+            public int compare(int[] a, int[] b){
+                return Integer.compare(a[0],b[0]);
+            }
+        });
+
         while (t > 0) {
             int[] temp = new int[26];
             temp[0] = arr[25];

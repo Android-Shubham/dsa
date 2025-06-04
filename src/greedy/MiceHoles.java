@@ -2,8 +2,11 @@ package greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MiceHoles {
+
     int assignMiceHoles(int N, int[] M, int[] H) {
         Arrays.sort(M);
         Arrays.sort(H);
